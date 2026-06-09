@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bisnis Kontemporer Kristen</title>
+  <style>
+    :root {
+      --navy: #08265b;
+      --deep: #041a3f;
+      --blue: #1264b7;
+      --sky: #55b7f2;
+      --ice: #eaf7ff;
+      --white: #ffffff;
+      --gold: #f1c75b;
+      --ink: #10213f;
+      --muted: #617189;
+      --line: rgba(8, 38, 91, 0.14);
+      --shadow: 0 22px 60px rgba(4, 26, 63, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: Inter, Poppins, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 12% 6%, rgba(85, 183, 242, 0.34), transparent 28rem),
+        radial-gradient(circle at 90% 14%, rgba(241, 199, 91, 0.18), transparent 24rem),
+        linear-gradient(135deg, #dcefff 0%, #ffffff 46%, #e7f3ff 100%);
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 28px auto;
+    }
+
+    .poster {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background:
+        linear-gradient(90deg, rgba(8, 38, 91, 0.04) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(8, 38, 91, 0.04) 1px, transparent 1px),
+        linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+      background-size: 36px 36px, 36px 36px, auto;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      box-shadow: var(--shadow);
+    }
+
+    .poster::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(160deg, var(--deep) 0 26%, rgba(8, 38, 91, 0.94) 26% 43%, transparent 43%),
+        radial-gradient(circle at 17% 16%, rgba(85, 183, 242, 0.42), transparent 18rem),
+        radial-gradient(circle at 76% 7%, rgba(255, 255, 255, 0.2), transparent 13rem);
+      pointer-events: none;
+    }
+
+    .poster::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 8px solid rgba(255, 255, 255, 0.52);
+      pointer-events: none;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      min-height: 520px;
+      padding: 44px;
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr) 360px;
+      gap: 30px;
+      align-items: center;
+      color: var(--white);
+    }
+
+    .cross-wrap {
+      position: relative;
+      height: 300px;
+      display: grid;
+      place-items: center;
+    }
+
+    .cross-glow {
+      position: absolute;
+      width: 170px;
+      height: 250px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.74), rgba(85, 183, 242, 0.24) 46%, transparent 72%);
+      filter: blur(8px);
+      animation: glowPulse 4s ease-in-out infinite;
+    }
+
+    .cross {
+      position: relative;
+      width: 130px;
+      height: 220px;
+      color: white;
+      filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.24));
+    }
+
+    .cross::before,
+    .cross::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #ffffff, #c7ecff);
+      transform: translate(-50%, -50%);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.72);
+    }
+
+    .cross::before {
+      width: 42px;
+      height: 220px;
+    }
+
+    .cross::after {
+      width: 130px;
+      height: 42px;
+      top: 35%;
+    }
+
+    .hero-copy {
+      min-width: 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      color: #dff5ff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 22px 0 14px;
+      font-size: clamp(44px, 7vw, 96px);
+      line-height: 0.9;
+      font-weight: 950;
+      letter-spacing: 0;
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    h1 .accent {
+      color: #a9e3ff;
+      text-shadow: 0 10px 28px rgba(85, 183, 242, 0.28);
+    }
+
+    .tagline {
+      display: inline-block;
+      max-width: 100%;
+      margin-bottom: 22px;
+      padding: 12px 18px;
+      border-radius: 20px;
+      color: var(--deep);
+      background: linear-gradient(90deg, #ffffff, #d9f2ff);
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.18);
+      font-size: clamp(13px, 1.8vw, 18px);
+      font-weight: 900;
+      letter-spacing: 1.2px;
+    }
+
+    .verse {
+      max-width: 720px;
+      padding: 20px 22px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(12px);
+    }
+
+    .verse p {
+      margin: 0;
+      font-size: clamp(15px, 2vw, 22px);
+      line-height: 1.42;
+      font-weight: 750;
+    }
+
+    .verse cite {
+      display: block;
+      margin-top: 10px;
+      color: #bdeeff;
+      font-style: normal;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 390px;
+    }
+
+    .dove {
+      position: absolute;
+      top: -22px;
+      right: 4px;
+      width: 150px;
+      color: #ffffff;
+      filter: drop-shadow(0 14px 24px rgba(4, 26, 63, 0.24));
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .presentation {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: min(360px, 100%);
+      min-height: 280px;
+      padding: 18px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(227, 246, 255, 0.92));
+      box-shadow: 0 26px 54px rgba(4, 26, 63, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.84);
+    }
+
+    .presentation svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .main {
+      padding: 10px 44px 36px;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+      color: var(--navy);
+      font-size: 14px;
+      font-weight: 950;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
+    .section-label::before,
+    .section-label::after {
+      content: "";
+      height: 2px;
+      flex: 1;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, rgba(18, 100, 183, 0.32), transparent);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      min-height: 360px;
+      padding: 28px;
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at 100% 0, rgba(85, 183, 242, 0.12), transparent 12rem),
+        linear-gradient(180deg, #ffffff, #f8fcff);
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 38px rgba(8, 38, 91, 0.1);
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms ease, transform 700ms ease, box-shadow 250ms ease;
+    }
+
+    .card.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card:hover {
+      box-shadow: 0 24px 54px rgba(8, 38, 91, 0.16);
+    }
+
+    .card-head {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .icon {
+      width: 70px;
+      height: 70px;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      color: var(--blue);
+      background: linear-gradient(145deg, #e9f7ff, #ffffff);
+      border: 1px solid rgba(85, 183, 242, 0.42);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8), 0 14px 28px rgba(18, 100, 183, 0.1);
+    }
+
+    .icon svg,
+    .foot-icon svg {
+      width: 38px;
+      height: 38px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(20px, 2.5vw, 28px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.62;
+      font-weight: 560;
+    }
+
+    .subhead {
+      margin: 20px 0 10px;
+      color: var(--navy);
+      font-size: 14px;
+      font-weight: 950;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    ul,
+    .checks {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    li {
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      gap: 10px;
+      align-items: start;
+      color: #243653;
+      font-size: 15.5px;
+      line-height: 1.42;
+      font-weight: 700;
+    }
+
+    .mark {
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      background: linear-gradient(145deg, var(--blue), var(--sky));
+      box-shadow: 0 8px 18px rgba(18, 100, 183, 0.18);
+      font-size: 15px;
+      font-weight: 950;
+    }
+
+    .quote-box {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 20px;
+      color: var(--navy);
+      background: linear-gradient(135deg, #eef9ff, #ffffff);
+      border-left: 5px solid var(--gold);
+      box-shadow: inset 0 0 0 1px rgba(18, 100, 183, 0.08);
+      font-size: 15px;
+      line-height: 1.5;
+      font-weight: 850;
+    }
+
+    .footer {
+      padding: 30px 44px 42px;
+      color: white;
+      background:
+        radial-gradient(circle at 12% 30%, rgba(85, 183, 242, 0.24), transparent 18rem),
+        linear-gradient(135deg, var(--deep), var(--navy));
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .foot-item {
+      display: grid;
+      justify-items: center;
+      gap: 10px;
+      min-height: 128px;
+      padding: 20px 12px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      text-align: center;
+    }
+
+    .foot-icon {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      color: #dff6ff;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+    }
+
+    .foot-item strong {
+      display: block;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 950;
+      letter-spacing: 0.4px;
+    }
+
+    .closing {
+      margin: 0;
+      color: #dff6ff;
+      text-align: center;
+      font-size: clamp(22px, 3.3vw, 38px);
+      line-height: 1.18;
+      font-weight: 950;
+      letter-spacing: 0;
+    }
+
+    svg.symbols {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% {
+        opacity: 0.72;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.06);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(12px);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 120px 1fr;
+        min-height: auto;
+      }
+
+      .cross-wrap {
+        height: 240px;
+      }
+
+      .cross {
+        width: 105px;
+        height: 178px;
+      }
+
+      .cross::before {
+        width: 34px;
+        height: 178px;
+      }
+
+      .cross::after {
+        width: 105px;
+        height: 34px;
+      }
+
+      .hero-art {
+        grid-column: 1 / -1;
+        min-height: 330px;
+      }
+
+      .presentation {
+        left: 0;
+        right: auto;
+        width: min(520px, 100%);
+      }
+
+      .dove {
+        right: 18px;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .page {
+        width: min(100% - 18px, 640px);
+        margin: 9px auto;
+      }
+
+      .poster,
+      .poster::after {
+        border-radius: 20px;
+      }
+
+      .hero,
+      .main,
+      .footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .hero {
+        padding-top: 28px;
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .cross-wrap {
+        height: 170px;
+        justify-content: start;
+      }
+
+      .cross-glow {
+        left: -8px;
+      }
+
+      .hero-art {
+        min-height: 292px;
+      }
+
+      .dove {
+        width: 112px;
+        top: 0;
+      }
+
+      .grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        min-height: auto;
+        padding: 22px;
+      }
+
+      .card-head {
+        grid-template-columns: 58px 1fr;
+        gap: 14px;
+      }
+
+      .icon {
+        width: 58px;
+        height: 58px;
+      }
+
+      .icon svg {
+        width: 31px;
+        height: 31px;
+      }
+
+      .section-label {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .tagline {
+        letter-spacing: 0.4px;
+      }
+
+      .presentation {
+        padding: 10px;
+      }
+
+      li {
+        font-size: 14.5px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <article class="poster" aria-label="Infografis Bisnis Kontemporer Kristen">
+      <svg class="symbols" aria-hidden="true">
+        <symbol id="book-cross" viewBox="0 0 24 24">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5v-13A2.5 2.5 0 0 1 6.5 3z"></path>
+          <path d="M12 7v7"></path>
+          <path d="M9 10h6"></path>
+        </symbol>
+        <symbol id="clipboard-shield" viewBox="0 0 24 24">
+          <path d="M9 4h6l1 2h3v14H5V6h3z"></path>
+          <path d="M9 4a3 3 0 0 1 6 0"></path>
+          <path d="M12 18s4-2 4-5v-2l-4-1.5L8 11v2c0 3 4 5 4 5z"></path>
+        </symbol>
+        <symbol id="target" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9"></circle>
+          <circle cx="12" cy="12" r="5"></circle>
+          <circle cx="12" cy="12" r="1.8"></circle>
+          <path d="M18 6l3-3"></path>
+          <path d="M21 3v4h-4"></path>
+        </symbol>
+        <symbol id="phone-cart" viewBox="0 0 24 24">
+          <rect x="6" y="2" width="12" height="20" rx="2.4"></rect>
+          <path d="M10 18h4"></path>
+          <path d="M9 7h1.2l1.4 6h4.2l1-4H11"></path>
+          <path d="M12 15h.1M16 15h.1"></path>
+        </symbol>
+        <symbol id="integrity" viewBox="0 0 24 24">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          <path d="m9 12 2 2 4-5"></path>
+        </symbol>
+        <symbol id="service" viewBox="0 0 24 24">
+          <path d="M4 14h6l2 2h4l4-4"></path>
+          <path d="M3 18h9l8-5a2 2 0 0 0-2-3l-5 3"></path>
+          <path d="M9 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+        </symbol>
+        <symbol id="innovation" viewBox="0 0 24 24">
+          <path d="M9 18h6"></path>
+          <path d="M10 22h4"></path>
+          <path d="M8 14a7 7 0 1 1 8 0c-.7.6-1 1.5-1 2.4V18H9v-1.6c0-.9-.3-1.8-1-2.4z"></path>
+          <path d="M12 6v4l3 2"></path>
+        </symbol>
+        <symbol id="impact" viewBox="0 0 24 24">
+          <path d="M3 17l6-6 4 4 8-8"></path>
+          <path d="M17 7h4v4"></path>
+          <path d="M4 21h16"></path>
+        </symbol>
+      </svg>
+
+      <div class="content">
+        <header class="hero">
+          <div class="cross-wrap" aria-hidden="true">
+            <div class="cross-glow"></div>
+            <div class="cross"></div>
+          </div>
+
+          <div class="hero-copy">
+            <div class="eyebrow">Infografis Edukasi Kristen</div>
+            <h1>
+              <span>BISNIS</span>
+              <span>KONTEMPORER</span>
+              <span class="accent">KRISTEN</span>
+            </h1>
+            <div class="tagline">BERINTEGRITAS &bull; MELAYANI &bull; MEMBERKATI</div>
+            <blockquote class="verse">
+              <p>"Apa pun juga yang kamu perbuat, perbuatlah dengan segenap hatimu seperti untuk Tuhan dan bukan untuk manusia."</p>
+              <cite>(Kolose 3:23)</cite>
+            </blockquote>
+          </div>
+
+          <div class="hero-art" aria-hidden="true">
+            <svg class="dove" viewBox="0 0 180 120">
+              <path d="M49 67C24 57 14 38 10 20c25 10 45 22 62 43 8-23 31-40 67-52-5 25-22 45-50 60 24-3 45 4 61 21-31 4-57 1-77-10-12 9-29 15-53 18 6-12 15-23 29-33z" fill="currentColor" opacity=".96"></path>
+              <path d="M72 63c17 7 34 7 51-1" fill="none" stroke="#bdeeff" stroke-width="4" stroke-linecap="round"></path>
+              <circle cx="102" cy="45" r="3" fill="#08265b"></circle>
+              <path d="M111 50l19 3-17 8" fill="#f1c75b"></path>
+            </svg>
+
+            <div class="presentation">
+              <svg viewBox="0 0 360 280">
+                <rect x="12" y="18" width="250" height="150" rx="18" fill="#eff9ff" stroke="#1264b7" stroke-width="3"></rect>
+                <path d="M43 132h192" stroke="#c7dff0" stroke-width="4" stroke-linecap="round"></path>
+                <rect x="50" y="88" width="28" height="44" rx="6" fill="#55b7f2"></rect>
+                <rect x="96" y="68" width="28" height="64" rx="6" fill="#1264b7"></rect>
+                <rect x="142" y="48" width="28" height="84" rx="6" fill="#f1c75b"></rect>
+                <path d="M51 74c38-22 75-31 124-48l-4 18 46-31-18 52-7-19C142 68 92 78 51 94z" fill="#0a3678" opacity=".9"></path>
+                <circle cx="80" cy="211" r="24" fill="#f0c49a"></circle>
+                <path d="M55 275v-34c0-16 12-28 28-28s28 12 28 28v34z" fill="#1264b7"></path>
+                <path d="M58 205c8-21 41-23 48-1-18-1-25-11-48 1z" fill="#152543"></path>
+                <circle cx="260" cy="207" r="24" fill="#f0c49a"></circle>
+                <path d="M233 275v-34c0-16 12-28 28-28s28 12 28 28v34z" fill="#08265b"></path>
+                <path d="M239 202c7-19 39-19 48 2-14 0-28-8-48-2z" fill="#152543"></path>
+                <path d="M116 226h93" stroke="#1264b7" stroke-width="8" stroke-linecap="round"></path>
+                <path d="M198 224l31-24" stroke="#1264b7" stroke-width="8" stroke-linecap="round"></path>
+                <path d="M236 198l-7 24 27-11z" fill="#1264b7"></path>
+              </svg>
+            </div>
+          </div>
+        </header>
+
+        <main class="main">
+          <div class="section-label">Konten Utama</div>
+          <section class="grid" aria-label="Empat kartu utama">
+            <article class="card reveal">
+              <div class="card-head">
+                <div class="icon"><svg><use href="#book-cross"></use></svg></div>
+                <h2>Pengertian Bisnis Kontemporer Kristen</h2>
+              </div>
+              <p>Bisnis kontemporer Kristen adalah kegiatan usaha yang dijalankan secara profesional, inovatif, dan berkelanjutan dengan berlandaskan nilai-nilai Alkitab.</p>
+              <div class="subhead">Prinsip Utama</div>
+              <ul class="checks">
+                <li><span class="mark">&#10003;</span><span>Integritas</span></li>
+                <li><span class="mark">&#10003;</span><span>Kasih</span></li>
+                <li><span class="mark">&#10003;</span><span>Kejujuran</span></li>
+                <li><span class="mark">&#10003;</span><span>Tanggung Jawab</span></li>
+                <li><span class="mark">&#10003;</span><span>Keadilan</span></li>
+              </ul>
+            </article>
+
+            <article class="card reveal">
+              <div class="card-head">
+                <div class="icon"><svg><use href="#clipboard-shield"></use></svg></div>
+                <h2>Dasar Bisnis Kontemporer Kristen</h2>
+              </div>
+              <ul>
+                <li><span class="mark">-</span><span>Firman Tuhan sebagai dasar keputusan bisnis.</span></li>
+                <li><span class="mark">-</span><span>Kejujuran dalam bekerja dan berdagang.</span></li>
+                <li><span class="mark">-</span><span>Menghindari keserakahan.</span></li>
+                <li><span class="mark">-</span><span>Berlaku adil kepada semua pihak.</span></li>
+              </ul>
+              <div class="quote-box">"Yang dituntut Tuhan dari padamu: berlaku adil, mencintai kesetiaan, dan hidup dengan rendah hati di hadapan Allahmu." - Mikha 6:8</div>
+            </article>
+
+            <article class="card reveal">
+              <div class="card-head">
+                <div class="icon"><svg><use href="#target"></use></svg></div>
+                <h2>Tujuan Bisnis Kontemporer Kristen</h2>
+              </div>
+              <ul>
+                <li><span class="mark">-</span><span>Memuliakan Tuhan.</span></li>
+                <li><span class="mark">-</span><span>Memberikan manfaat bagi sesama.</span></li>
+                <li><span class="mark">-</span><span>Menciptakan kesejahteraan bersama.</span></li>
+                <li><span class="mark">-</span><span>Menjadi berkat bagi masyarakat.</span></li>
+                <li><span class="mark">-</span><span>Mendukung pertumbuhan Kerajaan Allah.</span></li>
+              </ul>
+            </article>
+
+            <article class="card reveal">
+              <div class="card-head">
+                <div class="icon"><svg><use href="#phone-cart"></use></svg></div>
+                <h2>Aplikasi E-Commerce Dalam Bisnis Kontemporer Kristen</h2>
+              </div>
+              <ul>
+                <li><span class="mark">-</span><span>Menggunakan teknologi untuk melayani.</span></li>
+                <li><span class="mark">-</span><span>Menjual produk yang jujur dan bermanfaat.</span></li>
+                <li><span class="mark">-</span><span>Transparansi informasi dan harga.</span></li>
+                <li><span class="mark">-</span><span>Membangun komunitas positif.</span></li>
+                <li><span class="mark">-</span><span>Menggunakan media sosial sebagai sarana berbagi nilai.</span></li>
+              </ul>
+            </article>
+          </section>
+        </main>
+
+        <footer class="footer">
+          <div class="footer-grid">
+            <div class="foot-item reveal">
+              <div class="foot-icon"><svg><use href="#integrity"></use></svg></div>
+              <strong>Integritas</strong>
+            </div>
+            <div class="foot-item reveal">
+              <div class="foot-icon"><svg><use href="#service"></use></svg></div>
+              <strong>Pelayanan</strong>
+            </div>
+            <div class="foot-item reveal">
+              <div class="foot-icon"><svg><use href="#innovation"></use></svg></div>
+              <strong>Inovasi</strong>
+            </div>
+            <div class="foot-item reveal">
+              <div class="foot-icon"><svg><use href="#impact"></use></svg></div>
+              <strong>Dampak</strong>
+            </div>
+          </div>
+          <p class="closing">"Berbisnis Untuk Tuhan, Untuk Sesama, Untuk Kerajaan-Nya."</p>
+        </footer>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    const revealItems = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.16,
+      rootMargin: "0px 0px -40px 0px"
+    });
+
+    revealItems.forEach((item, index) => {
+      item.style.transitionDelay = `${Math.min(index * 80, 320)}ms`;
+      observer.observe(item);
+    });
+  </script>
+</body>
+</html>

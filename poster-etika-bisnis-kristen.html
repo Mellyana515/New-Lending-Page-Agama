@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poster Etika Bisnis Kontemporer dalam Perspektif Kristen</title>
+  <style>
+    :root {
+      --navy: #082044;
+      --blue: #0e4f92;
+      --blue-soft: #eaf4ff;
+      --gold: #d5a238;
+      --gold-soft: #fff0bd;
+      --paper: #fffefd;
+      --ink: #162236;
+      --muted: #5e6a7d;
+      --line: rgba(14, 79, 146, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 36px 18px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      background:
+        linear-gradient(135deg, #d8e8f8 0%, #f5f8fc 45%, #e7eef8 100%);
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      color: var(--ink);
+    }
+
+    .poster {
+      width: min(820px, calc(100vw - 36px));
+      min-height: 1180px;
+      position: relative;
+      overflow: hidden;
+      background: var(--paper);
+      border: 1px solid rgba(8, 32, 68, 0.12);
+      border-radius: 10px;
+      box-shadow: 0 22px 70px rgba(8, 32, 68, 0.22);
+    }
+
+    .poster::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, var(--navy) 0 258px, transparent 258px),
+        radial-gradient(circle at 85% 52px, rgba(213, 162, 56, 0.34), transparent 132px),
+        radial-gradient(circle at 5% 210px, rgba(255, 240, 189, 0.55), transparent 120px),
+        linear-gradient(90deg, rgba(14, 79, 146, 0.04) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(14, 79, 146, 0.04) 1px, transparent 1px);
+      background-size: auto, auto, auto, 34px 34px, 34px 34px;
+      pointer-events: none;
+    }
+
+    .poster::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 9px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-soft), var(--gold));
+    }
+
+    header,
+    main,
+    footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      padding: 48px 48px 26px;
+      color: white;
+    }
+
+    .kicker {
+      width: max-content;
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 240, 189, 0.48);
+      color: var(--gold-soft);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .kicker svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    h1 {
+      margin: 20px 0 12px;
+      max-width: 710px;
+      font-size: 42px;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 640px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .hero-row {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1fr 190px;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .verse-card {
+      padding: 18px 20px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--gold), #f0c665);
+      color: #13223a;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+    }
+
+    .verse-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 18px;
+    }
+
+    .verse-card span {
+      display: block;
+      font-size: 15px;
+      line-height: 1.42;
+      font-weight: 700;
+    }
+
+    .value-stack {
+      display: grid;
+      gap: 9px;
+    }
+
+    .value-pill {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    main {
+      padding: 26px 48px 30px;
+    }
+
+    .intro-strip {
+      margin-bottom: 18px;
+      padding: 16px 18px;
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 14px;
+      align-items: center;
+      border-radius: 8px;
+      background: #f7fbff;
+      border: 1px solid var(--line);
+    }
+
+    .intro-strip p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .panel {
+      min-height: 232px;
+      padding: 20px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 25px rgba(8, 32, 68, 0.08);
+    }
+
+    .panel.gold {
+      background: linear-gradient(180deg, #fffaf0, #ffffff);
+      border-color: rgba(213, 162, 56, 0.34);
+    }
+
+    .panel.wide {
+      grid-column: 1 / -1;
+      min-height: 190px;
+    }
+
+    .panel-head {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: var(--blue);
+      background: var(--blue-soft);
+      border: 1px solid rgba(213, 162, 56, 0.4);
+    }
+
+    .icon-box.gold-fill {
+      color: var(--navy);
+      background: var(--gold-soft);
+      border-color: rgba(213, 162, 56, 0.58);
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 20px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.52;
+    }
+
+    .points {
+      display: grid;
+      gap: 8px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .points li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 8px;
+      color: var(--ink);
+      font-size: 13.8px;
+      line-height: 1.35;
+    }
+
+    .dot {
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .verse {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-left: 4px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      background: #f4f8ff;
+      color: var(--blue);
+      font-size: 13.5px;
+      line-height: 1.35;
+      font-weight: 750;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .flow-step {
+      min-height: 108px;
+      padding: 14px 10px;
+      border-radius: 8px;
+      background: #f7fbff;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .mini-icon {
+      width: 36px;
+      height: 36px;
+      margin: 0 auto 8px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--blue);
+      color: white;
+    }
+
+    .flow-step strong {
+      display: block;
+      color: var(--navy);
+      font-size: 14px;
+      line-height: 1.2;
+    }
+
+    .flow-step span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 11.5px;
+      line-height: 1.28;
+    }
+
+    .conclusion {
+      margin-top: 16px;
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 15px;
+      border-radius: 8px;
+      color: white;
+      background:
+        linear-gradient(135deg, rgba(213, 162, 56, 0.18), transparent 45%),
+        linear-gradient(135deg, var(--navy), var(--blue));
+      box-shadow: 0 14px 30px rgba(8, 32, 68, 0.18);
+    }
+
+    .conclusion .icon-box {
+      width: 58px;
+      height: 58px;
+      color: var(--gold-soft);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 240, 189, 0.38);
+    }
+
+    .conclusion h2 {
+      color: var(--gold-soft);
+      margin-bottom: 6px;
+    }
+
+    .conclusion p {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 15px;
+    }
+
+    footer {
+      margin: 0 48px 34px;
+      padding-top: 16px;
+      border-top: 2px solid rgba(213, 162, 56, 0.45);
+      color: var(--navy);
+      text-align: center;
+      font-size: 13.5px;
+      font-weight: 800;
+    }
+
+    svg {
+      width: 27px;
+      height: 27px;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 2.15;
+    }
+
+    .mini-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 18px 10px;
+      }
+
+      .poster {
+        width: min(620px, calc(100vw - 20px));
+        min-height: auto;
+      }
+
+      header,
+      main {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .hero-row,
+      .grid,
+      .intro-strip,
+      .conclusion {
+        grid-template-columns: 1fr;
+      }
+
+      .flow {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      footer {
+        margin-left: 22px;
+        margin-right: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="poster" aria-label="Poster Etika Bisnis Kontemporer dalam Perspektif Kristen">
+    <header>
+      <div class="kicker">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20"/><path d="M5 7h14"/><path d="M7 21h10"/></svg>
+        Infografis Kristen
+      </div>
+      <h1>Etika Bisnis Kontemporer dalam Perspektif Kristen</h1>
+      <p class="subtitle">Membangun bisnis modern yang jujur, adil, bertanggung jawab, dan menjadi kesaksian iman di tengah dunia digital.</p>
+
+      <div class="hero-row">
+        <div class="verse-card">
+          <strong>Kolose 3:23</strong>
+          <span>"Apa pun yang kamu perbuat, perbuatlah dengan segenap hatimu seperti untuk Tuhan."</span>
+        </div>
+        <div class="value-stack">
+          <div class="value-pill">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>
+            Integritas
+          </div>
+          <div class="value-pill">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.35-9-9.5C1.3 7.2 4 3 8.2 4.2c1.7.5 2.8 1.7 3.8 3 1-1.3 2.1-2.5 3.8-3C20 3 22.7 7.2 21 11.5 19 16.65 12 21 12 21z"/></svg>
+            Pelayanan
+          </div>
+          <div class="value-pill">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18"/><path d="M5 6h14"/><path d="m6 6 3 7"/><path d="m18 6-3 7"/></svg>
+            Keadilan
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro-strip">
+        <div class="icon-box gold-fill" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8"/><path d="M8 11h6"/></svg>
+        </div>
+        <p>Dalam iman Kristen, bisnis bukan hanya soal laba. Bisnis adalah ruang untuk mengelola berkat, melayani sesama, dan mengambil keputusan yang selaras dengan kebenaran Allah.</p>
+      </section>
+
+      <div class="grid">
+        <section class="panel">
+          <div class="panel-head">
+            <div class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h1"/><path d="M9 13h1"/><path d="M9 17h1"/></svg>
+            </div>
+            <h2>1. Pengertian Bisnis Kontemporer Kristen</h2>
+          </div>
+          <p>Kegiatan ekonomi modern yang memakai teknologi, inovasi, dan jejaring digital, tetapi tetap diarahkan oleh nilai Kerajaan Allah.</p>
+          <ul class="points">
+            <li><span class="dot">&#10003;</span><span>Laba dipahami sebagai tanggung jawab, bukan tujuan tunggal.</span></li>
+            <li><span class="dot">&#10003;</span><span>Keputusan bisnis memperhatikan manusia, ciptaan, dan keadilan.</span></li>
+          </ul>
+        </section>
+
+        <section class="panel gold">
+          <div class="panel-head">
+            <div class="icon-box gold-fill" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M5 6h14"/><path d="m6 6 3 7"/><path d="m18 6-3 7"/><path d="M3 13h6c0 2-1.5 4-3 4s-3-2-3-4z"/><path d="M15 13h6c0 2-1.5 4-3 4s-3-2-3-4z"/></svg>
+            </div>
+            <h2>2. Dasar Alkitab dalam Bisnis</h2>
+          </div>
+          <p>Alkitab menekankan kejujuran, kesetiaan, keadilan, kerja rajin, dan kepedulian kepada sesama dalam setiap transaksi.</p>
+          <div class="verse">Amsal 11:1: Tuhan berkenan pada timbangan yang jujur.</div>
+          <div class="verse">Lukas 16:10: Setia dalam perkara kecil membentuk kepercayaan besar.</div>
+        </section>
+
+        <section class="panel gold">
+          <div class="panel-head">
+            <div class="icon-box gold-fill" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9-9.5C1.3 7.2 4 3 8.2 4.2c1.7.5 2.8 1.7 3.8 3 1-1.3 2.1-2.5 3.8-3C20 3 22.7 7.2 21 11.5 19 16.65 12 21 12 21z"/></svg>
+            </div>
+            <h2>3. Tujuan Bisnis Menurut Iman Kristen</h2>
+          </div>
+          <p>Bisnis menjadi sarana pelayanan untuk menciptakan nilai, membuka pekerjaan, menolong kebutuhan masyarakat, dan memuliakan Allah.</p>
+          <ul class="points">
+            <li><span class="dot">&#10003;</span><span>Melayani pelanggan dengan mutu dan kebenaran.</span></li>
+            <li><span class="dot">&#10003;</span><span>Membangun budaya kerja yang adil dan manusiawi.</span></li>
+          </ul>
+          <div class="verse">Matius 5:16: Perbuatan baik menuntun orang memuliakan Bapa.</div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M8 10h8"/><path d="M8 14h5"/></svg>
+            </div>
+            <h2>4. Penerapan E-Commerce dalam Bisnis Kristen</h2>
+          </div>
+          <p>E-commerce memperluas pelayanan bisnis, tetapi harus dijalankan dengan transparansi, keamanan data, dan komunikasi yang benar.</p>
+          <ul class="points">
+            <li><span class="dot">&#10003;</span><span>Deskripsi produk jujur, harga jelas, dan layanan bertanggung jawab.</span></li>
+            <li><span class="dot">&#10003;</span><span>Data pelanggan dilindungi sebagai bentuk kasih dan penghormatan.</span></li>
+          </ul>
+        </section>
+
+        <section class="panel wide">
+          <div class="panel-head">
+            <div class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4"/><path d="M5 4h14"/><path d="M5 20h14"/></svg>
+            </div>
+            <h2>Prinsip Praktis di Era Digital</h2>
+          </div>
+          <p>Setiap keputusan bisnis perlu diuji: apakah ini jujur, adil, bermanfaat, dan mencerminkan kasih Kristus?</p>
+
+          <div class="flow">
+            <div class="flow-step">
+              <div class="mini-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+              <strong>Jujur</strong>
+              <span>Iklan dan transaksi tidak menipu.</span>
+            </div>
+            <div class="flow-step">
+              <div class="mini-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M5 6h14"/><path d="m6 6 3 7"/><path d="m18 6-3 7"/></svg></div>
+              <strong>Adil</strong>
+              <span>Upah, harga, dan relasi tidak merugikan.</span>
+            </div>
+            <div class="flow-step">
+              <div class="mini-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 8-8 8s-8-3-8-8a8 8 0 1 1 16 0z"/><path d="M9 12l2 2 4-5"/></svg></div>
+              <strong>Aman</strong>
+              <span>Privasi dan pembayaran dijaga.</span>
+            </div>
+            <div class="flow-step">
+              <div class="mini-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+              <strong>Berkat</strong>
+              <span>Laba dipakai untuk kebaikan.</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="conclusion">
+        <div class="icon-box" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-5"/></svg>
+        </div>
+        <div>
+          <h2>5. Kesimpulan</h2>
+          <p>Etika bisnis Kristen menolong pelaku usaha menghadirkan integritas di pasar, kasih dalam pelayanan, dan keadilan dalam sistem digital. Bisnis bukan hanya mencari laba, tetapi menjadi kesaksian iman yang nyata.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      "Hendaklah kasih itu jangan pura-pura" - Roma 12:9 | Integritas, Pelayanan, Keadilan
+    </footer>
+  </article>
+</body>
+</html>
